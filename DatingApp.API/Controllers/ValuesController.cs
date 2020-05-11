@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DatingApp.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.API.Controllers
-{   //HA# http:localhost:5000/api/values route
+{   
+    [Authorize]
+    //HA# http:localhost:5000/api/values route
     [Route("api/[controller]")]
     [ApiController]
     //HA# ValuesController is really api/values. The 'Controller' part acn be ignored 
@@ -25,7 +28,7 @@ namespace DatingApp.API.Controllers
            var values = await  _context.Values.ToListAsync();
            return   Ok (values);
         }
-
+        [AllowAnonymous]
         // GET api/values/5
         [HttpGet("{id}")] //HA# pass value to method
         public async Task<IActionResult> GetValue(int id)
