@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
     this.registerMode = true;
   }
 
+  // Del
   cancelRegisterMode(registerMode: boolean){
     this.registerMode = registerMode;
   }
